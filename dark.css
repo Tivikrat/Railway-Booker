@@ -1,5 +1,6 @@
 *{
 	margin: 0px;
+	padding: 0px;
 	color: #ffffff;
 	background-color: #2F2F2F;
 }
@@ -55,6 +56,16 @@ input{
 	padding: 10px;
 	box-sizing: border-box;
 }
+button{
+	border-style: solid;
+	margin: 5px;
+	padding: 5px;
+	cursor: pointer;
+}
+td, th{
+	margin: 5px;
+	padding: 5px;
+}
 .emptyInput{
 	border-color: #df8f00;
 	background-color: #00303b;
@@ -79,17 +90,73 @@ input{
 	color: #6fdf6f;
 	font-size: 25px;
 }
+.namerMode .infoArea, .namerMode .focusArea{
+	display: none;
+}
+.focusMode .infoArea, .focusMode .namerArea{
+	display: none;
+}
+.infoMode .focusArea, .infoMode .namerArea{
+	display: none;
+}
 .focusArea{
 	border: 4px solid #ffbf5f;
 	font-size: 25px;
-	display: inline-block;
+	display: block;
 	justify-content: center;
 	padding: 20px;
 }
 .focusArea div{
 	text-align: left;
 }
-.focusArea button{
+.infoArea{
+	display: table-row;
+	box-sizing: border-box;
+}
+.infoArea h2{
+	box-sizing: content-box;
+	display: inline-block;
+}
+.infoArea input{
+	margin: 5px;
+	padding: 5px;
+	box-sizing: border-box;
+	display: inline-block;
+	width: unset;
+	border-color: #6fdf6f;
+	background-color: #00303b;
+	color: #6fdf6f;
+	font-size: 20px;
+}
+.infoArea input:nth-of-type(date){
+	margin: 0px;
+	padding: 5px;
+	box-sizing: border-box;
+	display: inline-block;
+	width: unset;
+	border-color: #6fdf6f;
+	background-color: #00303b;
+	color: #6fdf6f;
+	font-size: 20px;
+}
+.infoArea button{
+	margin: 5px;
+	padding: 5px;
+	box-sizing: border-box;
+	display: inline-block;
+}
+.trainsExist #noTrains{
+	display: none;
+}
+.trainsDontExist #tableRoutes, .trainsDontExist #tableRoutesHeader{
+	display: none;
+}
+#tableRoutes{
+	border-collapse: collapse;
+	width: 100%;
+	text-align: center;
+}
+.complete{
 	background-color: #003f3f;
 	color: #6fdf6f;
 	cursor: pointer;
@@ -97,6 +164,17 @@ input{
 	border: 1px solid #6fdf6f;
 	padding: 10px;
 	margin: 10px;
+	position: relative;
+}
+.incomplete{
+	background-color: #3f3f3f;
+	color: #ff5f5f;
+	cursor: pointer;
+	font-size: 25px;
+	border: 1px solid #ff5f5f;
+	padding: 10px;
+	margin: 10px;
+	position: relative;
 }
 .StationList{
 	position: absolute;
@@ -106,6 +184,7 @@ ul{
 	padding: 0px;
 	margin: 10px;
 	margin-top: -10px;
+	z-index: 1;
 }
 li{
 	background-color: #00303b;
@@ -120,19 +199,49 @@ li:hover{
 #propertiesSelector{
 	text-align: center;
 }
-.datePicker{
-	position: absolute;
-	visibility: hidden;
-	border-color: #bfbf00;
-	background-color: #00303b;
-	color: #bfbf00;
-	font-size: 25px;
-	border-collapse: collapse;
+
+.complete .tooltiptext{
+    visibility: hidden;
+    position: absolute;
 }
-.datePicker tr td{
+.incomplete .tooltiptext {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 2;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -112px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.incomplete .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+.incomplete:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+#routes td, #routes th{
 	border: 2px solid #bfbf00;
-	background-color: #00303b;
-	box-sizing: border-box;
-	margin: 0px;
 	padding: 0px;
+	margin: 0px;
+}
+#routes td button{
+	margin: 0px;
+	width: 100%;
+	box-sizing: border-box;
+	height: 50%;
+	border: 2px solid #6fdf6f;
 }
